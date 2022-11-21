@@ -1,0 +1,53 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import numpy as np
+df=pd.DataFrame({"Manufacturer":["Acura","Acura","Audi","Audi"],
+   "Model":["Integra","Legend","Integra","Legend"],
+   "Type":["Small","Midsize","Compact","Midsize"],
+   "Min.Price":[12.9,29.2,25.9,30.8],
+   "Price":[15.9,33.9,29.1,37.7],
+   "Max.Price":[18.8,38.7,32.3,44.6],
+   "mpgcity":[25,18,20,19],
+   "MPG.highway":[25,18,20,19],
+   "EngineSize":[1.8,3.2,2.8,2.8],
+   "Horsepower":[140,200,172,172],
+   "Passengers":[5,5,5,6],
+   "Rear.seat.room":[26.5,30,28,31]
+                })
+
+fig=plt.figure() 
+plt.title("Price Range of Car")
+sns.boxplot(df["Price"])
+print(np.min(df.Price))
+print(np.max(df.Price)) 
+print(np.std(df.Price))
+print(np.mean(df.Price))
+print(np.median(df.Price))
+plt.show()
+
+fig=plt.figure()
+x=df.Horsepower
+y=df.mpgcity
+
+plt.title("Sactter") 
+plt.scatter(x,y)
+plt.show()
+
+mode1=df["mpgcity"].mode()
+print("Highest frequency : ",mode1) 
+fig=plt.figure() 
+x=df.mpgcity
+plt.title("Frequency distribution") 
+plt.xlabel("mpgcity")
+plt.hist(x, bins=5, edgecolor="black")
+plt.show()
+
+df=df.head()
+fig=plt.figure()
+x=df.EngineSize
+y=df.Horsepower 
+plt.title("Variations between Enginesize and Horsepower")
+plt.plot(x,y)
+plt.show()
+
